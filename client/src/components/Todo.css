@@ -1,0 +1,44 @@
+.todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.todoMeta {
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+}
+
+.todoMain {
+  display: flex;
+}
+
+.todoCheckbox {
+  width: 20px;
+}
+
+.todoPriorityHigh {
+  background-color: rgb(254, 200, 200);
+  color: rgb(233, 75, 75);
+  margin-right: 0px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.todoPriorityMedium {
+  background-color: rgb(255, 228, 177);
+  color: rgb(213, 161, 65);
+  margin-right: 0px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.todoPriorityLow {
+  background-color: rgb(174, 255, 174);
+  color: rgb(76, 203, 76);
+  margin-right: 0px;
+  border-radius: 5px;
+  padding: 5px;
+}

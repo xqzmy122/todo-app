@@ -1,21 +1,30 @@
-import { useState } from "react";
+import './Todo.css'
 
-function Todo({id, isDone, todoText, onToggleTodos}) {
+function Todo({id, isDone, todoText, priority, tag, onToggleTodos}) {
 
   function onClickHandler() {
     onToggleTodos(id)
   }
+
   return (
-    <>
-      <div>{todoText}</div>
-      {isDone ? (
-        <button>
+    <div className="todo">
+    <div className="todoMain">
+      <input className='todoCheckbox' type="checkbox" checked={isDone} onChange={onClickHandler}/>
+      {/* {isDone ? (
+        <button className='todoButton'>
           Delete
         </button>
       ) : (
-        <button onClick={onClickHandler}>Done</button>
-      )}
-    </>
+        <button className='todoButton' onClick={onClickHandler}>Done</button>
+      )} */}
+      <div className="todoText">{todoText}</div>
+      
+    </div>
+    <div className="todoMeta">
+      <div className={`todoPriority${priority}`}>{priority}</div>
+      <div className="todoTag">{tag}</div>
+    </div>
+    </div>
   );
 }
 
