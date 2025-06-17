@@ -23,6 +23,11 @@ const todos = [
     id: 5,
     todoText: "Прочитать книгу",
     isDone: true
+  },
+  {
+    id: 6,
+    todoText: "Погулять с другом",
+    isDone: false
   }
 ];
 

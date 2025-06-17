@@ -7,6 +7,8 @@ const API = "http://localhost:3000/todos";
 function TodoList() {
   const [error, setError] = useState("");
   const [todos, setTodos] = useState([]);
+  console.log('----------');
+  console.log(todos);
 
   useEffect(() => {
     try {
@@ -20,30 +22,34 @@ function TodoList() {
     }
   }, []);
 
-  function toggleTodos() {
-    return 'hello'
+  function toggleTodos(id) {
+    setTodos(todos.map((todo) => {
+      if (todo.id === id) {
+        return {...todo, isDone: !todo.isDone}
+      }
+      return todo
+    }))
   }
 
   return (
     <div className="todoList">
-      <div className="doneTodos todos">
-        <h2>Выполненные задания</h2>
-        {todos
-          .filter((todo) => todo.isDone === true)
-          .map((todo) => (
-            <Todo {...todo} />
-          ))}
-      </div>
       <div className="proccesingTodos todos">
         <h2>В процессе</h2>
         {todos
           .filter((todo) => todo.isDone === false)
-          .map((todo) => (
-            <Todo {...todo}/>
-          ))}
+          .map((todo) => {
+            return <Todo {...todo} onToggleTodos={toggleTodos}/>
+          })}
+      </div>
+      <div className="doneTodos todos">
+        <h2>Выполненные задания</h2>
+        {todos
+          .filter((todo) => todo.isDone === true)
+          .map((todo) => {
+            return <Todo {...todo} onToggleTodos={toggleTodos}/>
+          })}
       </div>
     </div>
-  );
-}
+)}
 
-export default TodoList;
+export default TodoList

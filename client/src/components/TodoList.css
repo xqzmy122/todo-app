@@ -1,5 +1,7 @@
 .todoList {
   display: flex;
+  background-color: white;
+  border-radius: 10px;
 }
 
 button {
@@ -17,5 +19,4 @@ button {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  border: 1px solid grey;
 }

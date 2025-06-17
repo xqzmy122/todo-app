@@ -1,19 +1,22 @@
-import { useState } from "react"
+import { useState } from "react";
 
-function Todo(props) {
-    console.log(props);
-    const [isDone, setIsDone] = useState(props.isDone)
-    console.log(isDone);
+function Todo({id, isDone, todoText, onToggleTodos}) {
 
-    function onClickHandler() {
-        setIsDone(!isDone)
-    }
-    return (
-        <>
-        <div>{props.todoText}</div>
-        {isDone ? <button onClick={onClickHandler}>Delete</button> : <button onClick={onClickHandler}>Done</button>}
-        </>
-)
+  function onClickHandler() {
+    onToggleTodos(id)
+  }
+  return (
+    <>
+      <div>{todoText}</div>
+      {isDone ? (
+        <button>
+          Delete
+        </button>
+      ) : (
+        <button onClick={onClickHandler}>Done</button>
+      )}
+    </>
+  );
 }
 
-export default Todo
+export default Todo;
