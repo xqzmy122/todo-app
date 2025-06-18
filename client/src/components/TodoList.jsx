@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import Todo from "./Todo";
-import './TodoList.css'
+import Modal from "./Modal";
+import "./TodoList.css";
 
 const API = "http://localhost:3000/todos";
 
 function TodoList() {
   const [error, setError] = useState("");
   const [todos, setTodos] = useState([]);
-  console.log('----------');
+  const [isModalShown, setIsModalShown] = useState(false);
+
+  console.log("----------");
   console.log(todos);
 
   useEffect(() => {
@@ -23,33 +26,49 @@ function TodoList() {
   }, []);
 
   function toggleTodos(id) {
-    setTodos(todos.map((todo) => {
-      if (todo.id === id) {
-        return {...todo, isDone: !todo.isDone}
-      }
-      return todo
-    }))
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, isDone: !todo.isDone };
+        }
+        return todo;
+      })
+    );
+  }
+
+  function addTodo(newTodo) {
+    setTodos(prev => {
+      return [...prev, newTodo]
+    }) 
   }
 
   return (
     <div className="todoList">
+      <Modal show={isModalShown} onClose={() => setIsModalShown(false)} addTodo={addTodo}/>
       <div className="proccesingTodos todos">
-        <h2>В процессе</h2>
+        <h2>In process</h2>
+        <button
+          className="openModalButton"
+          onClick={() => setIsModalShown(true)}
+        >
+          +
+        </button>
         {todos
           .filter((todo) => todo.isDone === false)
           .map((todo) => {
-            return <Todo {...todo} onToggleTodos={toggleTodos}/>
+            return <Todo {...todo} onToggleTodos={toggleTodos} />;
           })}
       </div>
       <div className="doneTodos todos">
-        <h2>Выполненные задания</h2>
+        <h2>Done</h2>
         {todos
           .filter((todo) => todo.isDone === true)
           .map((todo) => {
-            return <Todo {...todo} onToggleTodos={toggleTodos}/>
+            return <Todo {...todo} onToggleTodos={toggleTodos} />;
           })}
       </div>
     </div>
-)}
+  );
+}
 
-export default TodoList
+export default TodoList;
