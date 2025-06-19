@@ -8,8 +8,8 @@ function Modal({ show, onClose, addTodo}) {
     id: nanoid(),
     todoText: "",
     isDone: false,
-    Priority: "",
-    Tag: "",
+    priority: "",
+    tag: "",
   });
  
   // Отправляем на сервер при сабмите
@@ -69,7 +69,7 @@ function Modal({ show, onClose, addTodo}) {
               type="text"
               onChange={(e) => {
                 setNewTodo(prev => {
-                  return {...prev, Priority: e.target.value}
+                  return {...prev, priority: e.target.value}
                 })
               }}
             />
@@ -79,7 +79,7 @@ function Modal({ show, onClose, addTodo}) {
               type="text"
               onChange={(e) => {
                 setNewTodo(prev => {
-                  return {...prev, Tag: e.target.value}
+                  return {...prev, tag: e.target.value}
                 })
               }}
             />

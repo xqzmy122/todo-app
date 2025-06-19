@@ -25,6 +25,8 @@
   margin-right: 0px;
   border-radius: 5px;
   padding: 5px;
+  width: 120px;
+  text-align: center;
 }
 
 .todoPriorityMedium {
@@ -33,6 +35,8 @@
   margin-right: 0px;
   border-radius: 5px;
   padding: 5px;
+  width: 120px;
+  text-align: center;
 }
 
 .todoPriorityLow {
@@ -40,5 +44,31 @@
   color: rgb(76, 203, 76);
   margin-right: 0px;
   border-radius: 5px;
+  padding: 5px;
+  width: 120px;
+  text-align: center;
+}
+
+.todoTagPersonal {
+  border-radius: 10px;
+  background-color: rgb(111, 152, 255);
+  text-align: center;
+  width: 140px;
+  padding: 5px;
+}
+
+.todoTagLeisure {
+  border-radius: 10px;
+  background-color: rgb(128, 253, 132);
+  text-align: center;
+  width: 140px;
+  padding: 5px;
+}
+
+.todoTagStudy {
+  border-radius: 10px;
+  background-color: rgb(253, 190, 128);
+  text-align: center;
+  width: 140px;
   padding: 5px;
 }

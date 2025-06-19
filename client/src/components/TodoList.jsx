@@ -56,7 +56,7 @@ function TodoList() {
         {todos
           .filter((todo) => todo.isDone === false)
           .map((todo) => {
-            return <Todo {...todo} onToggleTodos={toggleTodos} />;
+            return <Todo {...todo} onToggleTodos={toggleTodos} key={todo.id}/>;
           })}
       </div>
       <div className="doneTodos todos">
@@ -64,7 +64,7 @@ function TodoList() {
         {todos
           .filter((todo) => todo.isDone === true)
           .map((todo) => {
-            return <Todo {...todo} onToggleTodos={toggleTodos} />;
+            return <Todo {...todo} onToggleTodos={toggleTodos} key={todo.id}/>;
           })}
       </div>
     </div>

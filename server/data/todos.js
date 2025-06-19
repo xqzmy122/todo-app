@@ -39,7 +39,7 @@ const todos = [
     todoText: "Погулять с другом",
     isDone: false,
     priority: 'Low',
-    tag: 'Peronal'
+    tag: 'Personal'
   }
 ];
 
