@@ -28,7 +28,7 @@ function TodoList() {
   function toggleTodos(id) {
     setTodos(
       todos.map((todo) => {
-        if (todo.id === id) {
+        if (todo._id === id) {
           return { ...todo, isDone: !todo.isDone };
         }
         return todo;
@@ -40,6 +40,10 @@ function TodoList() {
     setTodos(prev => {
       return [...prev, newTodo]
     }) 
+  }
+
+  function handlerDeleteTodo(id) {
+    setTodos(todos.filter(todo => todo._id !== id))
   }
 
   return (
@@ -56,7 +60,7 @@ function TodoList() {
         {todos
           .filter((todo) => todo.isDone === false)
           .map((todo) => {
-            return <Todo {...todo} onToggleTodos={toggleTodos} key={todo.id}/>;
+            return <Todo {...todo} onToggleTodos={toggleTodos} key={todo._id} onDelete={handlerDeleteTodo}/>;
           })}
       </div>
       <div className="doneTodos todos">
@@ -64,7 +68,7 @@ function TodoList() {
         {todos
           .filter((todo) => todo.isDone === true)
           .map((todo) => {
-            return <Todo {...todo} onToggleTodos={toggleTodos} key={todo.id}/>;
+            return <Todo {...todo} onToggleTodos={toggleTodos} key={todo._id}/>;
           })}
       </div>
     </div>

@@ -1,8 +1,17 @@
 import "./Todo.css";
 
-function Todo({ id, isDone, todoText, priority, tag, onToggleTodos }) {
+function Todo({ _id, isDone, todoText, priority, tag, onToggleTodos, onDelete }) {
   function onClickHandler() {
-    onToggleTodos(id);
+    onToggleTodos(_id);
+  }
+
+  async function deleteTodo() {
+    await fetch(`http://localhost:3000/todo/${_id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+    })
+
+    onDelete(_id)
   }
 
   return (
@@ -20,6 +29,7 @@ function Todo({ id, isDone, todoText, priority, tag, onToggleTodos }) {
         <div className={`todoPriority${priority}`}>{priority}</div>
         <div className={`todoTag${tag}`}>{tag}</div>
       </div>
+      <button onClick={() => deleteTodo()}>Delete</button>
     </div>
   );
 }
