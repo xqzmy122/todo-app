@@ -27,7 +27,7 @@ app.get('/todos', async (req, res) => {
 })
 
 
-app.post('/todos', async (req, res) => {
+app.post('/todo', async (req, res) => {
   try {
     const newTodo = await todo.create(req.body)
     // todos.push(req.body)
@@ -36,6 +36,17 @@ app.post('/todos', async (req, res) => {
     console.log(error.message);
   }
   
+})
+
+app.delete('/todo/:id', async (req, res) => {
+  try {
+    console.log(req.params);
+    const {id} = req.params
+    const todoToDelete = await todo.findByIdAndDelete(id)
+    res.status(200).json(todoToDelete)
+  } catch (error) {
+    res.status(500).json(error.message)
+  }
 })
 
 app.listen(PORT, () => {
