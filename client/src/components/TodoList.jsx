@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
-import Todo from "./Todo";
 import Modal from "./Modal";
+import TodoSection from "./TodoSection";
 import "./TodoList.css";
 
 const API = "http://localhost:3000/todos";
 
 function TodoList() {
   const [error, setError] = useState("");
-  const [todos, setTodos] = useState([]);
-  const [isModalShown, setIsModalShown] = useState(false);
+  const [todos, setTodos] = useState([]); // храним массив объектов todo
+  const [isModalShown, setIsModalShown] = useState(false); // состояние модального окна
 
   console.log("----------");
   console.log(todos);
 
+  // загружаем данные с бекэнда
   useEffect(() => {
     try {
       (async function fetchData() {
@@ -25,6 +26,7 @@ function TodoList() {
     }
   }, []);
 
+  // меняем поле isDone конкретной todo
   function toggleTodos(id) {
     setTodos(
       todos.map((todo) => {
@@ -36,41 +38,43 @@ function TodoList() {
     );
   }
 
+  // функция, которую пробрасываем в компонент модального окна, чтобы менять состояние todos
   function addTodo(newTodo) {
-    setTodos(prev => {
-      return [...prev, newTodo]
-    }) 
+    setTodos((prev) => {
+      return [...prev, newTodo];
+    });
   }
 
+  // функция, которую пробрасываем в компонент модального окна, чтобы менять состояние todos
   function handlerDeleteTodo(id) {
-    setTodos(todos.filter(todo => todo._id !== id))
+    setTodos(todos.filter((todo) => todo._id !== id));
   }
 
   return (
     <div className="todoList">
-      <Modal show={isModalShown} onClose={() => setIsModalShown(false)} addTodo={addTodo}/>
-      <div className="proccesingTodos todos">
-        <h2>In process</h2>
-        <button
-          className="openModalButton"
-          onClick={() => setIsModalShown(true)}
-        >
-          +
-        </button>
-        {todos
-          .filter((todo) => todo.isDone === false)
-          .map((todo) => {
-            return <Todo {...todo} onToggleTodos={toggleTodos} key={todo._id} onDelete={handlerDeleteTodo}/>;
-          })}
-      </div>
-      <div className="doneTodos todos">
-        <h2>Done</h2>
-        {todos
-          .filter((todo) => todo.isDone === true)
-          .map((todo) => {
-            return <Todo {...todo} onToggleTodos={toggleTodos} key={todo._id}/>;
-          })}
-      </div>
+      <Modal
+        show={isModalShown}
+        onClose={() => setIsModalShown(false)}
+        addTodo={addTodo}
+      />
+      <TodoSection
+        className={"proccesingTodos todos"}
+        title={"In proccess"}
+        isDone={false}
+        todos={todos}
+        toggleTodos={toggleTodos}
+        handlerDeleteTodo={handlerDeleteTodo}
+        setIsModalShown={setIsModalShown}
+      />
+      <TodoSection
+        className={"doneTodos todos"}
+        title={"Done"}
+        isDone={true}
+        todos={todos}
+        toggleTodos={toggleTodos}
+        handlerDeleteTodo={handlerDeleteTodo}
+        setIsModalShown={setIsModalShown}
+      />
     </div>
   );
 }

@@ -1,0 +1,35 @@
+.dropDown {
+  width: 300px;
+  font-size: 1.2em;
+  position: relative;
+}
+
+.dropDownButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+}
+
+.dropDownButton:hover {
+  cursor: pointer;
+}
+
+.dropDownContent {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.08);
+}
+
+.dropDownItem {
+  margin: 10px;
+  padding: 10px;
+}
+
+.dropDownItem:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}

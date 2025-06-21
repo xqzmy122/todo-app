@@ -1,4 +1,5 @@
 import "./Modal.css";
+import Dropdown from "./Dropdown";
 import { useState, useRef } from "react";
 import closeButton from "../assets/close-button.png";
 
@@ -29,12 +30,10 @@ function Modal({ show, onClose, addTodo }) {
 
       if (!res.ok) {
         throw new Error("failed to fetch");
-        console.log("hello");
       }
 
-      console.log(res.ok);
-      console.log(res);
       addTodo(newTodo);
+      onClose();
     } catch (error) {
       console.log(error.message);
     }
@@ -68,6 +67,14 @@ function Modal({ show, onClose, addTodo }) {
                     ...prev,
                     todoText: e.target.value,
                   };
+                });
+              }}
+            />
+            <Dropdown // как достать данные?
+              options={["React", "Cesium", "Typescript"]}
+              onChange={(e) => {
+                setNewTodo((prev) => {
+                  return { ...prev, priority: e.target.textContent };
                 });
               }}
             />
