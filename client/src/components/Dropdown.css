@@ -1,7 +1,8 @@
 .dropDown {
-  width: 300px;
+  width: 90%;
   font-size: 1.2em;
   position: relative;
+  margin: 10px;
 }
 
 .dropDownButton {
@@ -20,16 +21,19 @@
   position: absolute;
   top: 50px;
   width: 100%;
-  background-color: #fff;
+  background-color: #ffffff;
   box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.08);
+  z-index: 100;
 }
 
 .dropDownItem {
   margin: 10px;
   padding: 10px;
+  transition: 0.2s;
 }
 
 .dropDownItem:hover {
   background-color: #f1f1f1;
   cursor: pointer;
+  transform: 1s;
 }

@@ -17,62 +17,63 @@
 
 .todoMain {
   display: flex;
+  gap: 20px;
 }
 
 .todoCheckbox {
   width: 20px;
 }
 
-.todoPriorityHigh {
-  background-color: rgb(254, 200, 200);
-  color: rgb(233, 75, 75);
+.todoPriority {
   margin-right: 0px;
-  border-radius: 5px;
-  padding: 5px;
-  width: 120px;
-  text-align: center;
-}
-
-.todoPriorityMedium {
-  background-color: rgb(255, 228, 177);
-  color: rgb(213, 161, 65);
-  margin-right: 0px;
-  border-radius: 5px;
-  padding: 5px;
-  width: 120px;
-  text-align: center;
-}
-
-.todoPriorityLow {
-  background-color: rgb(174, 255, 174);
-  color: rgb(76, 203, 76);
-  margin-right: 0px;
-  border-radius: 5px;
-  padding: 5px;
-  width: 120px;
-  text-align: center;
-}
-
-.todoTagPersonal {
   border-radius: 10px;
+  padding: 5px;
+  width: 120px;
+  text-align: center;
+}
+
+.highPriority {
+  background-color: rgb(255, 215, 215);
+  color: rgb(220, 57, 57);
+}
+
+.mediumPriority {
+  background-color: rgb(255, 243, 212);
+  color: rgb(210, 170, 62);
+}
+
+.lowPriority {
+  background-color: rgb(213, 252, 208);
+  color: rgb(68, 211, 68);
+}
+
+.todoTag {
+  text-align: center;
+  width: 140px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgb(213, 226, 254);
+  color: rgb(104, 153, 252);
+}
+
+.todoDeleteButton {
+  font-size: 0.9em;
+  border-radius: 10px;
+  width: 140px;
+}
+
+/* .personalTag {
   background-color: rgb(111, 152, 255);
-  text-align: center;
-  width: 140px;
-  padding: 5px;
 }
 
-.todoTagLeisure {
-  border-radius: 10px;
+.leisureTag {
   background-color: rgb(128, 253, 132);
-  text-align: center;
-  width: 140px;
-  padding: 5px;
 }
 
-.todoTagStudy {
-  border-radius: 10px;
+.studyTag {
   background-color: rgb(253, 190, 128);
-  text-align: center;
-  width: 140px;
-  padding: 5px;
 }
+
+.workTag {
+  background-color: red;
+} */

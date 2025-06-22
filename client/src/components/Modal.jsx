@@ -71,14 +71,15 @@ function Modal({ show, onClose, addTodo }) {
               }}
             />
             <Dropdown // как достать данные?
-              options={["React", "Cesium", "Typescript"]}
-              onChange={(e) => {
-                setNewTodo((prev) => {
-                  return { ...prev, priority: e.target.textContent };
-                });
-              }}
+              options={["High", "Medium", "Low"]}
+              setNewTodo={setNewTodo}
+              metaName={'priority'}
             />
-            <input
+            <Dropdown options={["Study", "Work", "Personal"]}
+            setNewTodo={setNewTodo}
+            metaName={'tag'}
+            />
+            {/* <input
               className="modalInput"
               placeholder="Priority"
               type="text"
@@ -92,8 +93,8 @@ function Modal({ show, onClose, addTodo }) {
                   return { ...prev, priority: e.target.value };
                 });
               }}
-            />
-            <input
+            /> */}
+            {/* <input
               className="modalInput"
               placeholder="Tag"
               type="text"
@@ -103,7 +104,7 @@ function Modal({ show, onClose, addTodo }) {
                   return { ...prev, tag: e.target.value };
                 });
               }}
-            />
+            /> */}
             <button className="modalButton" onClick={onClickHandler}>
               Add
             </button>

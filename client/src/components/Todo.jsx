@@ -26,10 +26,11 @@ function Todo({ _id, isDone, todoText, priority, tag, onToggleTodos, onDelete })
         <div className="todoText">{todoText}</div>
       </div>
       <div className="todoMeta">
-        <div className={`todoPriority${priority}`}>{priority}</div>
-        <div className={`todoTag${tag}`}>{tag}</div>
+        <div className={`todoPriority ${priority.toLowerCase()}Priority`}>{priority}</div>
+        <div className={`todoTag ${tag.toLowerCase()}Tag`}>{tag}</div>
       </div>
-      <button onClick={() => deleteTodo()}>Delete</button>
+      <button className="todoDeleteButton" onClick={() => deleteTodo()}>Delete</button> 
+      {/* есть баги */}
     </div>
   );
 }
