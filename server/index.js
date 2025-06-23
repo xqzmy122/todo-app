@@ -1,6 +1,5 @@
 const express = require('express')
 const mongoose = require('mongoose')
-// const todos = require('./data/todos')
 const todo = require('./models/todo.model.js')
 const cors = require('cors')
 const app = express()
@@ -17,10 +16,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/Todo_DB')
 app.use(cors())
 app.use(express.json())
 
-// app.get('/todos', (req, res) => {
-//   res.send(todos)
-// })
-
 app.get('/todos', async (req, res) => {
   const todos = await todo.find({})
   res.status(200).json(todos)
@@ -30,8 +25,8 @@ app.get('/todos', async (req, res) => {
 app.post('/todo', async (req, res) => {
   try {
     const newTodo = await todo.create(req.body)
-    // todos.push(req.body)
-    res.send(200).json(newTodo)
+    console.log(`new todo ${newTodo}`);
+    res.status(200).json(newTodo)
   } catch (error) {
     console.log(error.message);
   }

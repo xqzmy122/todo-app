@@ -11,7 +11,8 @@ function TodoList() {
   const [isModalShown, setIsModalShown] = useState(false); // состояние модального окна
 
   console.log("----------");
-  console.log(todos);
+  console.log(`actual todos ${JSON.stringify(todos)}`);
+  console.log("rendered");
 
   // загружаем данные с бекэнда
   useEffect(() => {

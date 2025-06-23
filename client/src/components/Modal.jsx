@@ -27,12 +27,15 @@ function Modal({ show, onClose, addTodo }) {
         body: JSON.stringify(newTodo),
         headers: { "Content-Type": "application/json" },
       });
-
+    
+      console.log(res);
+      const data = await res.json()
+      console.log(`response data ${JSON.stringify(data)}`);
       if (!res.ok) {
         throw new Error("failed to fetch");
       }
 
-      addTodo(newTodo);
+      addTodo(data);
       onClose();
     } catch (error) {
       console.log(error.message);

@@ -1,9 +1,12 @@
 import Todo from "./Todo";
+import {nanoid} from 'nanoid'
+import './TodoSection.css'
 
 function TodoSection({ title, className, isDone, todos, toggleTodos, handlerDeleteTodo, setIsModalShown }) {
+  console.log(`todoSection todos ${JSON.stringify(todos)}`);
   return (
     <div className={className}>
-      <h2>{title}</h2>
+      <p className="todoSectionTitle">{title}</p>
       {!isDone && (
         <button
           className="openModalButton"
@@ -19,7 +22,7 @@ function TodoSection({ title, className, isDone, todos, toggleTodos, handlerDele
             <Todo
               {...todo}
               onToggleTodos={toggleTodos}
-              key={todo._id}
+              key={nanoid()}
               onDelete={handlerDeleteTodo}
             />
           );
