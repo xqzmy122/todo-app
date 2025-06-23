@@ -2,10 +2,9 @@ import "./Modal.css";
 import Dropdown from "./Dropdown";
 import { useState, useRef } from "react";
 import closeButton from "../assets/close-button.png";
+import { API_URL } from "../config";
 
 function Modal({ show, onClose, addTodo }) {
-  const todoPriorityRef = useRef();
-  const todoTagRef = useRef();
 
   const [newTodo, setNewTodo] = useState({
     todoText: "",
@@ -22,7 +21,7 @@ function Modal({ show, onClose, addTodo }) {
     alert(JSON.stringify(newTodo));
 
     try {
-      const res = await fetch("http://localhost:3000/todo", {
+      const res = await fetch(API_URL, {
         method: "POST",
         body: JSON.stringify(newTodo),
         headers: { "Content-Type": "application/json" },
@@ -59,7 +58,7 @@ function Modal({ show, onClose, addTodo }) {
           >
             <input
               className="modalInput"
-              placeholder="Name"
+              placeholder="what to do?"
               type="text"
               onKeyDown={(e) => {
                 if (e.key === "Enter") todoPriorityRef.current.focus();
@@ -73,7 +72,7 @@ function Modal({ show, onClose, addTodo }) {
                 });
               }}
             />
-            <Dropdown // как достать данные?
+            <Dropdown
               options={["High", "Medium", "Low"]}
               setNewTodo={setNewTodo}
               metaName={'priority'}
@@ -82,32 +81,6 @@ function Modal({ show, onClose, addTodo }) {
             setNewTodo={setNewTodo}
             metaName={'tag'}
             />
-            {/* <input
-              className="modalInput"
-              placeholder="Priority"
-              type="text"
-              ref={todoPriorityRef}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") todoTagRef.current.focus();
-                console.log("yes");
-              }}
-              onChange={(e) => {
-                setNewTodo((prev) => {
-                  return { ...prev, priority: e.target.value };
-                });
-              }}
-            /> */}
-            {/* <input
-              className="modalInput"
-              placeholder="Tag"
-              type="text"
-              ref={todoTagRef}
-              onChange={(e) => {
-                setNewTodo((prev) => {
-                  return { ...prev, tag: e.target.value };
-                });
-              }}
-            /> */}
             <button className="modalButton" onClick={onClickHandler}>
               Add
             </button>

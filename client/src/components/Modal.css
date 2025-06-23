@@ -9,7 +9,7 @@
 
 .modalWindow {
   position: absolute;
-  width: 350px;
+  width: 30%;
   height: 300px;
   top: calc(50% - 250px);
   left: calc(50% - 175px);
@@ -46,7 +46,8 @@
 
 .modalButton {
   width: 30%;
-  font-size: 1em;
+  font-size: 1.5em;
+  margin-top: 20px;
 }
 
 .modalForm {

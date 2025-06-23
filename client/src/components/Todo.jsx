@@ -1,4 +1,5 @@
 import "./Todo.css";
+import { API_URL } from "../config";
 
 function Todo({ _id, isDone, todoText, priority, tag, onToggleTodos, onDelete }) {
   function onClickHandler() {
@@ -6,7 +7,7 @@ function Todo({ _id, isDone, todoText, priority, tag, onToggleTodos, onDelete })
   }
 
   async function deleteTodo() {
-    await fetch(`http://localhost:3000/todo/${_id}`, {
+    await fetch(`${API_URL}${_id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
     })

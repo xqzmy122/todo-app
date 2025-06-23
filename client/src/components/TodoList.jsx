@@ -2,23 +2,18 @@ import { useState, useEffect } from "react";
 import Modal from "./Modal";
 import TodoSection from "./TodoSection";
 import "./TodoList.css";
-
-const API = "http://localhost:3000/todos";
+import { API_URL } from "../config";
 
 function TodoList() {
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const [todos, setTodos] = useState([]); // храним массив объектов todo
   const [isModalShown, setIsModalShown] = useState(false); // состояние модального окна
-
-  console.log("----------");
-  console.log(`actual todos ${JSON.stringify(todos)}`);
-  console.log("rendered");
 
   // загружаем данные с бекэнда
   useEffect(() => {
     try {
       (async function fetchData() {
-        const data = await fetch(API);
+        const data = await fetch(API_URL);
         const todos = await data.json();
         setTodos(todos);
       })();
@@ -46,7 +41,7 @@ function TodoList() {
     });
   }
 
-  // функция, которую пробрасываем в компонент модального окна, чтобы менять состояние todos
+  // функция, которую пробрасываем в компонент todo, чтобы менять состояние todos
   function handlerDeleteTodo(id) {
     setTodos(todos.filter((todo) => todo._id !== id));
   }
